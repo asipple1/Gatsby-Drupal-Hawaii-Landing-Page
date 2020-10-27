@@ -1,0 +1,8 @@
+.content-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 45px;
+  &__image {
+    min-height: 80vh;
+  }
+}
