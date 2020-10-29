@@ -56,7 +56,6 @@ const Marquee = ({data}) => {
       defaults: { duration: 1 },
       scrollTrigger: {
         trigger: trigger,
-        //markers: true,
         scrub: true,
         start: animationSettings['scrollStart'],
         end: animationSettings['scrollEnd'],

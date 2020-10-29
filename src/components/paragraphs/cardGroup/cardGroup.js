@@ -1,12 +1,40 @@
-import React from "react";
+import React, { useEffect, useRef } from "react"
 import { graphql } from "gatsby";
 import Img from 'gatsby-image';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import './cardGroup.scss';
 
 export const ParagraphCardGroup = ({ node }) => {
+  const cardsGroup = useRef();
+  useEffect(() => {
+    if (typeof window !== `undefined`) {
+      gsap.registerPlugin(ScrollTrigger)
+      gsap.core.globals('ScrollTrigger', ScrollTrigger)
+    }
+    const cards = cardsGroup.current.querySelectorAll('.card');
+    gsap.fromTo(cards, {
+      y: 100,
+      autoAlpha: 0,
+      scale: 0.8,
+    },{
+      y: 0,
+      autoAlpha: 1,
+      scale: 1,
+      ease: "power1.inOut",
+      stagger: {
+        each: 0.1,
+        from: "center",
+      },
+      scrollTrigger: {
+        start: "top center",
+        trigger: cardsGroup.current,
+      }
+    });
+  },[]);
   const cards = node.relationships.field_card;
   return (
-    <div className="container card-group">
+    <div className="container card-group" ref={cardsGroup}>
       {cards.map((card, index) => {
         const image = card.relationships.field_image.relationships.field_media_image.localFile.childImageSharp.fluid
         return  (
