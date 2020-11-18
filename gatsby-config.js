@@ -39,19 +39,6 @@ module.exports = {
         baseUrl: `https://sandbox.stagesr.com/users/andrews/drupal-layout/web/`,
         apiBase: `jsonapi`,
       },
-    },
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Bebas Neue`,
-          },
-          {
-            family: `Montserrat`,
-          },
-        ],
-      },
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
